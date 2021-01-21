@@ -1,0 +1,19 @@
+function largestRange(array) {
+	array.sort((a, b) => a - b);
+  let first = array[0];
+  let current = [];
+  let ranges = [];
+  for (let i = 0; i < array.length; i ++) {
+		if (array[i] === array[i + 1]) continue;
+    if (array[i] + 1 === array[i + 1]) {
+      current.push(array[i]);
+    } else {
+      current.push(array[i]);
+      if (ranges.length < current.length) {
+        ranges = current;
+      }
+      current = [];
+    }
+  }
+  return [ranges[0], ranges[ranges.length - 1]];
+}
